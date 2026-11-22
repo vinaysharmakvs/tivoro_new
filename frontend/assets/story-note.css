@@ -1,0 +1,22 @@
+/* A small editorial invitation beside the opening story. */
+.story-note{position:absolute;left:66%;top:180px;display:flex;align-items:center;min-height:48px;width:max-content;max-width:32%;color:var(--ink);font:italic clamp(30px,2.5vw,40px)/1.2 var(--serif);letter-spacing:-.025em;text-decoration:none;transform:rotate(-4deg);isolation:isolate}
+.story-note__copy{display:block;white-space:nowrap}
+.story-note em{position:relative;color:var(--rust);font:inherit}
+.story-note svg{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
+.story-note__arrow{position:absolute;right:calc(100% + 15px);top:6px;width:106px;height:68px;stroke-width:1.5;transition:transform 350ms var(--ease-out)}
+.story-note__underline{position:absolute;left:-3%;top:calc(100% - 2px);width:106%;height:12px;stroke-width:1.6;transition:transform 350ms var(--ease-out);transform-origin:left center}
+.story-note:focus-visible{outline:2px solid var(--rust);outline-offset:12px;border-radius:2px}
+@media(hover:hover){.story-note:hover .story-note__arrow{transform:translate(-5px,2px)}.story-note:hover .story-note__underline{transform:scaleX(1.06)}}
+@media(prefers-reduced-motion:no-preference){
+ .story-note__curve{animation:story-note-draw 850ms 220ms both ease-out}
+ .story-note__tip{animation:story-note-draw 280ms 850ms both ease-out}
+ .story-note__underline path{animation:story-note-draw 650ms 550ms both ease-out}
+ @keyframes story-note-draw{from{stroke-dasharray:1;stroke-dashoffset:1}to{stroke-dasharray:1;stroke-dashoffset:0}}
+}
+@media(min-width:701px) and (max-width:1000px){.story-note{left:67%;top:156px;font-size:30px}.story-note__arrow{width:76px;height:49px;right:calc(100% + 8px);top:9px}}
+@media(max-width:700px){
+ .story-note{position:relative;left:auto;top:auto;max-width:100%;margin:16px 3px 0 auto;gap:12px;font-size:30px;transform:rotate(-3deg)}
+ .story-note__arrow{position:static;width:58px;height:42px;flex:none;transform:rotate(12deg)}
+ .story-note__underline{height:10px}
+}
+@media(prefers-reduced-motion:reduce){.story-note svg{transition:none}}

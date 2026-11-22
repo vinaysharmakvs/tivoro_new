@@ -1,0 +1,55 @@
+/* Tivoro: a consistent movement language across all seven business pages. */
+.motion-project-media{isolation:isolate}
+.work-media-count{position:absolute;top:20px;left:22px;z-index:3;font:500 10px/1.4 var(--sans);letter-spacing:1.5px;color:var(--ink);background:var(--paper);padding:6px 10px;border-radius:2px;pointer-events:none}
+.work-scroll-cue{display:flex;align-items:center;gap:12px;margin-top:28px;font:11px/1.4 var(--sans);color:var(--muted)}
+.work-scroll-cue>span{display:block;width:1px;height:32px;background:var(--line);position:relative;overflow:hidden}
+.work-scroll-cue>span:after{content:'';position:absolute;inset:0;background:var(--rust);transform-origin:top;animation:work-scroll-hint 2s ease-in-out 2}
+@keyframes work-scroll-hint{0%{transform:translateY(-105%)}70%,100%{transform:translateY(105%)}}
+.project-screen[data-scene-depth]{translate:0 var(--scene-y,0px);scale:1.015}
+.motion-rule{position:relative}
+.motion-rule:before{content:'';position:absolute;top:-1px;left:0;width:100%;height:1px;background:var(--rust);transform:scaleX(0);transform-origin:left;opacity:.45;transition:transform 950ms cubic-bezier(.25,.8,.25,1);pointer-events:none}
+.motion-rule[data-rule-visible]:before{transform:scaleX(1)}
+.desktop-nav a{position:relative}
+.desktop-nav a:after{content:'';position:absolute;bottom:5px;left:0;width:100%;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform 450ms cubic-bezier(.25,.8,.25,1)}
+.desktop-nav a:hover:after,.desktop-nav a:focus-visible:after,.desktop-nav a[aria-current=page]:after{transform:scaleX(1);transform-origin:left}
+.project-caption .arrow,.case .text-link>span{display:inline-block;transition:translate 500ms cubic-bezier(.25,.8,.25,1)}
+.case:hover .project-caption .arrow,.case:focus-within .project-caption .arrow,.work-feature:hover .project-caption .arrow{translate:3px -3px}
+.paper-prototype{transition:translate 650ms cubic-bezier(.25,.8,.25,1),box-shadow 650ms ease}
+@media(hover:hover) and (pointer:fine){.paper-prototype:hover{translate:0 -8px;box-shadow:0 20px 36px #23251f1c}}
+.project-form input,.project-form select,.project-form textarea{transition:border-color 350ms ease,background-color 350ms ease}
+.project-form :is(input,select,textarea):focus{border-color:var(--rust);background-color:#a85b4307}
+@media(max-width:700px){.work-media-count{top:12px;left:12px;font-size:9px}.work-scroll-cue{margin-top:23px}.project-screen[data-scene-depth]{translate:none;scale:1}}
+@media(prefers-reduced-motion:reduce){.project-screen[data-scene-depth]{translate:none!important;scale:1!important}.motion-rule:before{transition:none;transform:scaleX(1)}.work-scroll-cue>span:after{animation:none;transform:none}.paper-prototype,.desktop-nav a:after,.project-caption .arrow,.case .text-link>span{transition:none!important}.paper-prototype:hover,.case:hover .project-caption .arrow{translate:none}}
+body[data-capture] .project-screen[data-scene-depth]{translate:none;scale:1}body[data-capture] .motion-rule:before{transform:scaleX(1)}body[data-capture] .work-scroll-cue>span:after{animation:none;transform:none}
+
+/* A short, sequential signal follows the illustrated customer journey.
+   Decorative only: it runs once on view, then leaves the copy still. */
+.analytics-path article{position:relative}
+.analytics-path article:before{content:'';position:absolute;top:-2px;left:0;width:100%;height:2px;background:#dfc6a4;transform:scaleX(0);transform-origin:left;pointer-events:none}
+.analytics-canvas[data-vignette-visible] .analytics-path article:before{animation:analytics-signal 2700ms cubic-bezier(.25,.8,.25,1) 550ms both}
+.analytics-canvas[data-vignette-visible] .analytics-path article:nth-of-type(2):before{animation-delay:900ms}
+.analytics-canvas[data-vignette-visible] .analytics-path article:nth-of-type(3):before{animation-delay:1250ms}
+@keyframes analytics-signal{0%{transform:scaleX(0);opacity:0}28%,65%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1);opacity:0}}
+.sketch-button{position:relative;overflow:hidden;isolation:isolate}
+.sketch-button:after{content:'';position:absolute;inset:0;z-index:-1;background:#dfc6a42b;transform:translateX(-102%);pointer-events:none}
+.product-canvas[data-vignette-visible] .sketch-button:after{animation:prototype-signal 1500ms cubic-bezier(.25,.8,.25,1) 650ms both}
+.product-canvas[data-vignette-visible] .paper-prototype:nth-child(2) .sketch-button:after{animation-delay:850ms}
+.product-canvas[data-vignette-visible] .paper-prototype:nth-child(3) .sketch-button:after{animation-delay:1050ms}
+@keyframes prototype-signal{to{transform:translateX(102%)}}
+.hello{position:relative}
+.hello:before{content:'';display:block;position:absolute;inset:0 auto auto 0;width:100%;height:1px;background:var(--rust);opacity:.3;transform:scaleX(0);transform-origin:left;transition:transform 950ms cubic-bezier(.25,.8,.25,1)}
+.hello[data-signature-visible]:before{transform:scaleX(1)}
+.project-plan li{transition:background-color 300ms ease}
+.project-plan li:hover{background-color:#974b3506}
+.project-form button[type=submit]{transition:background-color 300ms ease,transform 300ms ease}
+.project-form button[type=submit]:active{transform:scale(.985)}
+.page-end a{transition:color 300ms ease}
+.page-end a:hover{color:var(--rust)}
+@media(prefers-reduced-motion:reduce){
+ .analytics-path article:before,.sketch-button:after{animation:none!important;display:none}
+ .hello:before{transform:scaleX(1);transition:none}
+ .project-plan li,.project-form button[type=submit],.page-end a{transition:none}
+ .project-form button[type=submit]:active{transform:none}
+}
+body[data-capture] .analytics-path article:before,body[data-capture] .sketch-button:after{animation:none;display:none}
+body[data-capture] .hello:before{transition:none;transform:scaleX(1)}
