@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /review
+Disallow: /motion
+Sitemap: https://tivoro-studio-preview.mossy-petal-9415.chatgpt.site/sitemap.xml
